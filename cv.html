@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Diogo Correia</title>
+  <meta name="description" content="Curriculum Vitae" />
+  <meta name="theme-color" content="#0a0e16" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="hex-canvas" aria-hidden="true"></canvas>
+  <a href="#cv-skills" class="skip-link">Skip to content</a>
+  <header id="site-nav" class="nav"></header>
+
+  <main id="app" class="page">
+    <header id="cv-header" class="cv-header" data-reveal></header>
+    <section id="cv-skills" class="section" data-reveal></section>
+    <section id="cv-opensource" class="section" data-reveal></section>
+    <section id="cv-education" class="section" data-reveal></section>
+    <section id="cv-experience" class="section" data-reveal></section>
+    <section id="cv-projects" class="section" data-reveal></section>
+    <section id="cv-extra" class="section" data-reveal></section>
+  </main>
+  <footer id="footer" class="footer"></footer>
+
+  <noscript><p style="padding:2rem;color:#e5e5e5;font-family:sans-serif">Please enable JavaScript to view this page.</p></noscript>
+  <script type="module" src="assets/js/cv.js"></script>
+</body>
+</html>

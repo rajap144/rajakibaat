@@ -1,12 +1,15 @@
 # Hexagon Portfolio
 
-A single-page personal portfolio with an animated **3D hexagon field** background
-(Three.js), 3D tilting project cards, and a scroll-revealed timeline. Inspired by
+A four-page personal site with an animated **3D hexagon field** background
+(Three.js), 3D tilting cards, and scroll reveals. Inspired by
 [diogotc.com](https://diogotc.com/) — the connected dots are reimagined as floating,
 spinning, linking hexagons.
 
-**Everything is configurable from one file:** [`assets/js/config.js`](assets/js/config.js).
-No build step, no framework, no npm. Edit a file, refresh the browser.
+**Pages:** Home, **Blog**, **Impossible List**, **CV** — all sharing one theme and nav.
+
+**Everything is configurable, no build step, no framework, no npm.** Edit a file,
+refresh the browser. Shared look (theme, nav, socials, the 3D background) lives in
+[`assets/js/site.js`](assets/js/site.js); each page's content has its own config file.
 
 ---
 
@@ -25,21 +28,31 @@ python -m http.server 8000
 
 ## Make it yours
 
-Open **`assets/js/config.js`** and edit the values. The whole site is generated
-from this object.
+### Shared across all pages — [`assets/js/site.js`](assets/js/site.js)
 
-| Section        | What it controls                                              |
-| -------------- | ------------------------------------------------------------ |
-| `meta`         | Browser tab title, description, share-card text, favicon      |
-| `theme`        | All colors (also recolors the 3D hexagons) + fonts via CSS    |
-| `hexField`     | The 3D background — count, size, speed, links, parallax, etc. |
-| `hero`         | Avatar image, your name, tagline                             |
-| `socials`      | Your social / contact links (icon + label + url)             |
-| `intro`        | The "Hey!" blurb                                             |
-| `projects`     | Top project cards (image, description, link, tags)          |
-| `timeline`     | Your timeline entries (newest first)                         |
-| `contact`      | Contact call-to-action                                       |
-| `footer`       | Footer note + site-map links                                |
+| Export     | What it controls                                              |
+| ---------- | ------------------------------------------------------------ |
+| `THEME`    | All colors (also recolors the 3D hexagons)                   |
+| `HEXFIELD` | The 3D background — count, size, speed, links, parallax, etc. |
+| `BRAND`    | Name + monogram shown in the nav logo                        |
+| `NAV`      | The top navigation links                                     |
+| `SOCIALS`  | Your social / contact links (icon + label + url)            |
+| `FOOTER`   | Footer note + source-code link                              |
+
+### Per-page content
+
+| Page            | HTML                  | Content config                          |
+| --------------- | --------------------- | --------------------------------------- |
+| Home            | `index.html`          | `assets/js/config.js`                   |
+| Blog            | `blog.html`           | `assets/js/blog.config.js`              |
+| Impossible List | `impossiblelist.html` | `assets/js/impossiblelist.config.js`    |
+| CV              | `cv.html`             | `assets/js/cv.config.js`                |
+
+Text fields in the page configs accept tiny inline markdown:
+`[label](url)`, `**bold**`, `*italic*`, `~~strike~~`.
+
+To add or remove a page, edit `NAV` in `site.js` (and add/remove its `.html` +
+`*.config.js`).
 
 ### Images
 Replace the placeholders in `assets/img/` with your own:
@@ -100,15 +113,19 @@ or set it under **Settings → Pages → Custom domain**.
 ## Project structure
 
 ```
-index.html              # shell — mount points + font/Three.js loading
+index.html  blog.html  impossiblelist.html  cv.html   # one shell per page
 assets/
-  css/style.css         # design system (reads colors from config via CSS vars)
+  css/style.css            # design system (reads colors from theme via CSS vars)
   js/
-    config.js           # ← ALL your content + settings live here
-    icons.js            # SVG icon library
-    hexfield.js         # the 3D hexagon background (Three.js)
-    main.js             # renders config into the page + interactions
-  img/                  # avatar, favicon, project thumbnails
+    site.js                # ← SHARED: theme, hex field, nav, socials, footer
+    common.js              # shared renderers: nav, footer, theme, reveals, tilt
+    icons.js               # SVG icon library
+    hexfield.js            # the 3D hexagon background (Three.js)
+    config.js              # home content        + main.js   (home script)
+    blog.config.js         # blog content        + blog.js
+    impossiblelist.config.js  # impossible list  + impossiblelist.js
+    cv.config.js           # CV content          + cv.js
+  img/                     # avatar, favicon, project thumbnails
 .github/workflows/deploy.yml
 .nojekyll
 ```

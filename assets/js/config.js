@@ -4,6 +4,8 @@
  *  No build step. Save the file, refresh the browser.
  * ============================================================================= */
 
+import { THEME, HEXFIELD, SOCIALS } from "./site.js";
+
 export const CONFIG = {
 
   /* ---- Browser tab + social-share preview ---------------------------------- */
@@ -14,39 +16,10 @@ export const CONFIG = {
     favicon: "assets/img/favicon.svg",
   },
 
-  /* ---- THEME --------------------------------------------------------------
-   * Colors drive both the CSS and the 3D hexagons.
-   * Use any CSS color (hex, rgb, hsl).
-   * ------------------------------------------------------------------------- */
-  theme: {
-    bg:        "#0a0e16",   // page background (deep near-black)
-    bgSoft:    "#10151f",   // raised surfaces / cards
-    text:      "#e7ecf3",   // primary text
-    textDim:   "#8b97a8",   // secondary text
-    accent:    "#37e0c4",   // primary accent (teal) — links, highlights, hexagons
-    accent2:   "#7aa2ff",   // secondary accent (blue) — gradients, link lines
-    border:    "rgba(255,255,255,0.08)",
-  },
+  /* Theme, hex field and socials are SHARED — edit them in assets/js/site.js */
+  theme: THEME,
 
-  /* ---- 3D HEXAGON FIELD (the animated background) -------------------------
-   * The reference site uses connected dots; here they are 3D hexagons that
-   * float, spin and link to nearby neighbours, reacting to your cursor.
-   * Tune freely — every value is safe to change.
-   * ------------------------------------------------------------------------- */
-  hexField: {
-    enabled:       true,
-    count:         70,      // number of hexagons (lower = faster on weak GPUs)
-    spread:        70,      // how far they spread in 3D space
-    size:          1.2,     // base hexagon radius
-    sizeJitter:    0.9,     // random size variation
-    rotationSpeed: 0.25,    // how fast each hexagon spins
-    driftSpeed:    0.35,    // how fast they float around
-    linkDistance:  13,      // max distance to draw a connecting line
-    linkOpacity:   0.16,    // opacity of the connecting lines
-    parallax:      0.18,    // how strongly the field follows the mouse (0 = off)
-    wireframe:     false,   // true = outlined hexagons, false = solid faces
-    fillOpacity:   0.55,    // opacity of solid hexagon faces
-  },
+  hexField: HEXFIELD,
 
   /* ---- HERO (top of page) ------------------------------------------------- */
   hero: {
@@ -55,23 +28,7 @@ export const CONFIG = {
     tagline: "Student, Developer & Runner",
   },
 
-  /* ---- SOCIAL / CONTACT LINKS --------------------------------------------
-   * `icon` must match a key in assets/js/icons.js
-   * (github, mastodon, discord, matrix, strava, steam, instagram, email,
-   *  key, link, globe, linkedin, x, youtube).
-   * To use a custom icon, add `svg: { vb: "0 0 24 24", d: "M..." }` instead.
-   * ------------------------------------------------------------------------- */
-  socials: [
-    { icon: "github",    label: "diogotcorreia",   href: "https://github.com/diogotcorreia" },
-    { icon: "mastodon",  label: "@dtc@masto.pt",    href: "https://masto.pt/@dtc" },
-    { icon: "discord",   label: "diogocorreia",     href: "https://discord.com/users/218721510649626635" },
-    { icon: "matrix",    label: "@dtc:diogotc.com", href: "https://matrix.to/#/@dtc:diogotc.com" },
-    { icon: "strava",    label: "Diogo Correia",    href: "https://www.strava.com/athletes/22762930" },
-    { icon: "steam",     label: "rexcantor64",      href: "https://steamcommunity.com/id/rexcantor64" },
-    { icon: "instagram", label: "@diogotc2002",     href: "https://www.instagram.com/diogotc2002/" },
-    { icon: "email",     label: "me@diogotc.com",   href: "mailto:me@diogotc.com" },
-    { icon: "key",       label: "GPG Key",          href: "https://gpg.diogotc.com" },
-  ],
+  socials: SOCIALS,
 
   /* ---- INTRO blurb -------------------------------------------------------- */
   intro: {
@@ -184,15 +141,4 @@ export const CONFIG = {
     buttonHref: "mailto:me@diogotc.com",
   },
 
-  /* ---- FOOTER ------------------------------------------------------------- */
-  footer: {
-    note: "Built with Three.js. Inspired by diogotc.com.",
-    // Small text-link list shown in the footer ("site map").
-    links: [
-      { label: "Home", href: "#hero" },
-      { label: "Portfolio", href: "#projects" },
-      { label: "Timeline", href: "#timeline" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
 };
