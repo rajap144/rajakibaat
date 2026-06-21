@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO / social meta (edit in assets/js/config.js -> meta) ===== -->
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio" />
+  <meta name="theme-color" content="#0a0e16" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portfolio" />
+  <meta property="og:description" content="Personal portfolio" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Distinctive type: Syne (display) + Manrope (body) + Space Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Three.js for the 3D hexagon field -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Full-viewport 3D hexagon background -->
+  <canvas id="hex-canvas" aria-hidden="true"></canvas>
+
+  <!-- Skip link for keyboard users -->
+  <a href="#intro" class="skip-link">Skip to content</a>
+
+  <!-- Everything below is rendered from assets/js/config.js -->
+  <main id="app" class="app">
+    <header id="hero" class="hero" data-reveal></header>
+    <section id="intro" class="section intro" data-reveal></section>
+    <section id="projects" class="section projects"></section>
+    <section id="timeline" class="section timeline"></section>
+    <section id="contact" class="section contact" data-reveal></section>
+  </main>
+  <footer id="footer" class="footer"></footer>
+
+  <noscript>
+    <p style="padding:2rem;color:#e5e5e5;font-family:sans-serif">
+      This portfolio uses JavaScript to render its content and 3D animations.
+      Please enable JavaScript to view it.
+    </p>
+  </noscript>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
