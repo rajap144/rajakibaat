@@ -92,17 +92,15 @@ The animation automatically slows to a stop for visitors who have
 
 ## Deploy to GitHub Pages
 
-**Option A — automatic (included workflow):**
-1. Push this repo to GitHub.
-2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Every push to `main` publishes the site (see `.github/workflows/deploy.yml`).
+1. Push this repo to GitHub (already done if you cloned it from there).
+2. Go to **Settings → Pages → Build and deployment**.
+3. **Source: Deploy from a branch**, **Branch: `main` / `(root)`**, then **Save**.
+4. Wait ~1 minute. Your site is live at `https://<user>.github.io/<repo>/`.
 
-**Option B — no workflow:**
-1. Push to GitHub.
-2. **Settings → Pages → Source: Deploy from a branch → `main` / `root`**.
-3. Wait a minute; your site is at `https://<user>.github.io/<repo>/`.
-
-The `.nojekyll` file is included so GitHub Pages serves the `assets/` folder as-is.
+GitHub Pages automatically rebuilds on every push to `main`, so there is no
+build step or workflow to maintain. The `.nojekyll` file makes Pages serve the
+`assets/` folder as-is, and all asset paths are relative so it works under the
+`/<repo>/` sub-path.
 
 ### Custom domain
 Add a `CNAME` file containing your domain (e.g. `example.com`) and configure DNS,
@@ -126,7 +124,6 @@ assets/
     impossiblelist.config.js  # impossible list  + impossiblelist.js
     cv.config.js           # CV content          + cv.js
   img/                     # avatar, favicon, project thumbnails
-.github/workflows/deploy.yml
 .nojekyll
 ```
 
